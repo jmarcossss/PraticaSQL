@@ -74,7 +74,10 @@ select * from produtos where nome like '%Celular%' and preco < 1000;
 
 -- 4. Busque todos os clientes que não fizeram uma compra. Para isso, procure por sql not in e sql subquery
 
-select * from clientes where id not in (select id_cliente from compras);
+select *
+from clientes
+where id not in (select id_cliente
+                 from compras);
 
 -- 5. Busque todos os produtos comprados por Benício Freire Sampaio. Para isso, procure por sql in e sql subquery
 
@@ -82,4 +85,6 @@ select nome
 from produtos
 where id in (select id_produto
             from compras
-            where id_cliente in (select id from clientes where nome = 'Benício Freire Sampaio'));
+            where id_cliente in (select id
+                                 from clientes
+                                 where nome = 'Benício Freire Sampaio'));
