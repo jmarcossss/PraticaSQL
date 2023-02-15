@@ -19,19 +19,17 @@ order by "userId";
 -- Utilizando 1 query, obtenha a quantidade de depoimentos (testimonials)
 -- que o usuário com id 435 efetuou, incluindo o seu nome.
 
-select count(testimonials.id), users.name
-from testimonials
-join users ON testimonials.userId = users.id
+select count(t.id), u.name
+from testimonials t join users u ON t.userId = u.id
 where testimonials.userId = 435;
 
 -- Questão 4:
 -- Utilizando 1 query, obtenha o maior salário das vagas (jobs) ativas (active sendo true)
 -- e o nome das posições (roles) dessas vagas ordenadas de forma ascendente
 
-select max(jobs.salary) as maximum_salary, roles.name as role
-from jobs
-join roles ON jobs.roleId = roles.id
-where jobs.active = true
-GROUP BY roles.name
-ORDER BY roles.name ASC;
+select max(j.salary) as maximum_salary, r.name as role
+from jobs j join roles r ON j.roleId = r.id
+where j.active = true
+group by roles.name
+order by roles.name asc;
 
